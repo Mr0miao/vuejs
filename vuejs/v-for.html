@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			/*list-style: none;*/
+		}
+		
+		.container {
+			padding: 50px;
+		}
+		.name {
+			display: block;
+		}
+		img {
+			width: 200px;
+			height: 200px;
+		}
+	</style>
+
+	<body>
+		<div id="app" class="container">
+			<div class="wrap">
+				<ul>
+					<!-- 用vuejs的方法进行循环 数据遍历 映射 -->
+					<li v-for="el in list">
+						<span class="name">{{el.name}}</span>
+						<img :src="el.image" />
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		function _request_list () {
+			/* 去服务器请求一个列表  */
+			return [
+				{ name : 'vueJs', image : 'images/2.jpg'},
+				{ name : 'reactJs', image : 'images/5.jpg'},
+				{ name : 'angularJs', image : 'images/3.jpg'}
+			];
+		}
+		
+		var _vm = new Vue({
+			el : '#app',
+			data : {
+				list : _request_list()
+			}
+		});
+	</script>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			/*list-style: none;*/
+		}
+		
+		.container {
+			padding: 30px;
+		}
+		.goods .name {
+			display: block;
+		}
+		.goods img {
+			width: 200px;
+			height: 200px;
+		}
+	</style>
+
+	<body>
+		<div class="container">
+			<div class="wrap">
+				<ul>
+					<!--<li>1、html</li>
+					<li>2、css</li>
+					<li>3、javascript</li>-->
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script src="js/zepto.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+//		function _request_list () {
+//			/* 去服务器请求一个列表  */
+//			return [
+//				{ name : 'vueJs', image : 'images/2.jpg'},
+//				{ name : 'reactJs', image : 'images/5.jpg'},
+//				{ name : 'angularJs', image : 'images/3.jpg'}
+//			];
+//		}
+		
+		var _list = [
+			{ name : 'vueJs', image : 'images/2.jpg'},
+			{ name : 'reactJs', image : 'images/5.jpg'},
+			{ name : 'angularJs', image : 'images/3.jpg'}
+		];
+		
+		var _e_ul = $(".container .wrap ul");
+		/* 添加一项 */
+		function _m_add_item (data, e_ul) {
+			var _e_li = $("<li></li>");
+			var _e_goods = $("<div class='goods'></div>");
+			var _e_name = $("<span class='name'></span>");
+			var _e_img = $("<img />");
+			_e_img.attr('src', data.image);
+			_e_name.appendTo(_e_goods);
+			_e_name.text(data.name);
+			_e_img.appendTo(_e_goods);
+			_e_goods.appendTo(_e_li);
+//			_e_li.text(name);
+			_e_li.appendTo(e_ul);
+		}
+//		_m_add_item('4、jquery', _e_ul);
+//		_m_add_item('5、angularJs', _e_ul);
+//		var _list = _request_list();
+		var _item = null;
+		for ( var i = 0; i < _list.length; i ++) {
+			_item = _list[i];
+			_m_add_item(_item, _e_ul);
+		}
+	</script>
+
+</html>

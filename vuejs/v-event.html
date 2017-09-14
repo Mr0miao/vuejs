@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+			font-size: 16px;
+			font-family: "微软雅黑";
+		}
+		.container {
+			padding: 50px;
+		}
+		li {
+			margin-top: 20px;
+		}
+	</style>
+	<body>
+		<div id="app" class="container">
+			<div class="wrap">
+				<ul>
+					<li>
+						<!-- click事件 -->
+						<button @click="m_test">点我</button>
+					</li>
+					<li>
+						<!-- change 事件 -->
+						<!--<select v-model="json.language" @change="m_test2">-->
+						<!-- watch监视 -->
+						<select v-model="json.language">
+							<option value="php">php</option>
+							<option value="c">c</option>
+							<option value="java">java</option>
+						</select>
+					</li>
+				</ul>
+			</div>
+		</div>	
+	</body>
+	<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/vfilter.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var _mv = new Vue({
+			el : '#app',
+			data : {
+				json : {
+					language : "php"
+				}
+			},
+			watch : {	
+				"json" : function () {	//监视json对象发生变化触发函数
+					console.log("json对象被改变了！");
+				},
+//				"json.language" : function () {
+//					console.log("language属性被改变了！", this.json.language);
+//				}
+				"json.language" : function (value) {
+					console.log("language属性被改变了！", value);
+				}
+			},
+			methods : {
+				m_test : function () {
+					alert('hello vue.js!');
+				},
+//				m_test2 : function (ev) {
+//					console.log(this.json.language);
+//				}
+			}
+		});
+	</script>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+			font-size: 16px;
+			font-family: "微软雅黑";
+		}
+		.container {
+			padding: 50px;
+		}
+	</style>
+	<body>
+		<div id="app" class="container">
+			<div class="wrap">
+				<div class="login" v-if="1 == session.status">
+					你好，登录成功！
+				</div>
+				<div class="unlogin" v-if="0 == session.status">
+				<!--<div class="unlogin" v-else="">-->
+					你好，尚未登录！
+				</div>
+			</div>
+		</div>	
+	</body>
+	<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/vfilter.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+		function _m_get_session() {
+			return {
+				status : 1
+			};
+		}
+		
+		var _mv = new Vue({
+			el : '#app',
+			data : {
+				session : _m_get_session()
+			}
+		});
+	</script>
+</html>
